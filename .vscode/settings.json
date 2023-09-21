@@ -1,0 +1,10 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "string": "cpp",
+        "iostream": "cpp",
+        "xstring": "cpp"
+    },
+    "cmake.configureOnOpen": false
+}
