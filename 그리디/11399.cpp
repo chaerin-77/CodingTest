@@ -24,7 +24,8 @@
 
 #include <iomanip>
 #include <iostream>
-#include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 int main()
@@ -32,33 +33,20 @@ int main()
     int N = 0;
     cin >> N;
 
-    int pi[N];
+    vector<int> pi;
     int sum = 0;
     for (int i = 0; i < N; i++)
     {
-        cin >> pi[i];
+        int value;
+        cin >> value;
+        pi.push_back(value);
     }
 
-    for (int j = 0; j < N - 1; j++)
-    {
-        int temp, least;
-        least = j;
-        for (int k = j + 1; k < N; k++)
-        {
-            if (pi[least] > pi[k])
-                least = k;
-        }
-        temp = pi[j];
-        pi[j] = pi[least];
-        pi[least] = temp;
-    }
-
-    int num = N;
+    sort(pi.begin(), pi.end());
 
     for (int l = 0; l < N; l++)
     {
-        sum = sum + pi[l] * num;
-        num--;
+        sum += pi[l] * (N-l);
     }
 
     cout << sum;
