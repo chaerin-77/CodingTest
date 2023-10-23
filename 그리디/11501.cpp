@@ -31,17 +31,18 @@
 #include <vector>
 using namespace std;
 
-vector<int> input;
-vector<int> stock;
-
 int main()
 {
     int T;
     cin >> T;
     for (int i = 0; i < T; i++)
     {
-        int N, result = 0;
+        int N, max = -1;
+        long long result = 0;
+        vector<long long> input;
+
         cin >> N;
+
         for (int j = 0; j < N; j++)
         {
             int value;
@@ -49,26 +50,18 @@ int main()
             input.push_back(value);
         }
 
-        for (int j = 0; j < N; j++)
+        for (int j = N - 1; j >= 0; j--)
         {
-            if (input[j] > input[j + 1])
+            if (input[j] > max)
             {
-                while (!stock.empty())
-                {
-                    result += input[j] - stock.back();
-                    stock.pop_back();
-                }
+                max = input[j];
             }
-            else if (j == N - 1)
             else
             {
-                stock.push_back(input[j]);
+                result += max - input[j];
             }
         }
         cout << result << endl;
-
-        while (!input.empty()) input.pop_back();
-        while (!stock.empty()) stock.pop_back();
     }
     return 0;
 }
