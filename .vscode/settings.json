@@ -9,7 +9,8 @@
     "deque": "cpp",
     "vector": "cpp",
     "utility": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "ostream": "cpp"
   },
   "cmake.configureOnOpen": false,
   "C_Cpp_Runner.cCompilerPath": "gcc",
