@@ -44,3 +44,26 @@ ntopia는 이렇게 다양한 답을 듣고는 UCPC가 무엇의 약자인지는
 첫 번째 줄에 입력으로 주어진 문자열을 적절히 축약해 "UCPC"로 만들 수 있으면 "I love UCPC"를 출력하고, 
 만들 수 없으면 "I hate UCPC"를 출력한다.
 */
+#include <iostream>
+#include <string>
+using namespace std;
+
+string UCPC = "UCPC";
+string input;
+
+int main ()
+{
+    getline(cin, input);
+
+    int num = 0;
+    for (int i = 0; i < input.size(); i++)
+    {
+        if (num == 4) break;
+        if (input[i] == UCPC[num]) num++;
+    }
+
+    if (num == 4) cout << "I love UCPC" << endl;
+    else cout << "I hate UCPC" << endl;
+
+    return 0;
+}
