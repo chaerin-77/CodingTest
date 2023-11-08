@@ -47,7 +47,7 @@ int main ()
     cin >> T;
 
     zero[0] = 1; one[0] = 0;
-    zero[1] = 0; one[0] = 1;
+    zero[1] = 0; one[1] = 1;
     zero[2] = 1; one[2] = 1;
     zero[3] = 1; one[3] = 2;
 
@@ -55,5 +55,13 @@ int main ()
     {
         int N;
         cin >> N;
+
+        for (int j = 4; j <= N; j++)
+        {
+            zero[j] = zero[j - 1] + zero[j - 2];
+            one[j] = one[j - 1] + one[j - 2];
+        }
+        cout << zero[N] << " " << one[N] << endl;
     }
+    return 0;
 }
