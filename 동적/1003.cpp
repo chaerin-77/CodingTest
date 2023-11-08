@@ -24,7 +24,8 @@ fibonacci(0)은 0을 출력하고, 0을 리턴한다.
 fibonacci(2)는 fibonacci(1)과 fibonacci(0)의 결과를 얻고, 1을 리턴한다.
 첫 번째 호출한 fibonacci(1)은 1을 출력하고, 1을 리턴한다.
 fibonacci(3)은 fibonacci(2)와 fibonacci(1)의 결과를 얻고, 2를 리턴한다.
-1은 2번 출력되고, 0은 1번 출력된다. N이 주어졌을 때, fibonacci(N)을 호출했을 때, 0과 1이 각각 몇 번 출력되는지 구하는 프로그램을 작성하시오.
+1은 2번 출력되고, 0은 1번 출력된다. N이 주어졌을 때, fibonacci(N)을 호출했을 때, 
+0과 1이 각각 몇 번 출력되는지 구하는 프로그램을 작성하시오.
 
 입력
 첫째 줄에 테스트 케이스의 개수 T가 주어진다.
@@ -34,3 +35,25 @@ fibonacci(3)은 fibonacci(2)와 fibonacci(1)의 결과를 얻고, 2를 리턴한
 출력
 각 테스트 케이스마다 0이 출력되는 횟수와 1이 출력되는 횟수를 공백으로 구분해서 출력한다.
 */
+#include <iostream>
+using namespace std;
+
+int zero[41] = {0, };
+int one[41] = {0, };
+
+int main ()
+{
+    int T;
+    cin >> T;
+
+    zero[0] = 1; one[0] = 0;
+    zero[1] = 0; one[0] = 1;
+    zero[2] = 1; one[2] = 1;
+    zero[3] = 1; one[3] = 2;
+
+    for (int i = 0; i < T; i++)
+    {
+        int N;
+        cin >> N;
+    }
+}
