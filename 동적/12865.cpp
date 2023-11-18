@@ -45,6 +45,7 @@ int main ()
             else
             {
                 dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - Weight[i]] + Value[i]);
+                // 이전 물건의 해당 무게에는 이전 값들과 비교한 중 최대값이 저장되어 있기 때문에
             }
         }
     }
