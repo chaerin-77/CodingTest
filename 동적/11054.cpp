@@ -19,6 +19,7 @@
 첫째 줄에 수열 A의 부분 수열 중에서 가장 긴 바이토닉 수열의 길이를 출력한다.
 */
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int arr[1001] = {0, };
@@ -35,9 +36,9 @@ int main ()
         dp[i] = 1;
         for (int j = 0; j <= i; j++)
         {
-            if (arr[j] < arr[i] && dp[i] < dp[j] + 1)
+            if (arr[j] < arr[i])
             {
-                dp[i] = dp[j] + 1;
+                dp[i] = max(dp[i] ,dp[j] + 1);
             }
         }
     }
@@ -48,7 +49,7 @@ int main ()
         {
             if (arr[i] > arr[j] && r_dp[i] < r_dp[j] + 1)
             {
-                r_dp[i] = r_dp[j] + 1;
+                r_dp[i] = max(r_dp[i], r_dp[j] + 1);
             }
         }
     }
