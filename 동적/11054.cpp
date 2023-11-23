@@ -47,7 +47,7 @@ int main ()
         r_dp[i] = 1;
         for (int j = N; j >= i; j--)
         {
-            if (arr[i] > arr[j] && r_dp[i] < r_dp[j] + 1)
+            if (arr[i] > arr[j])
             {
                 r_dp[i] = max(r_dp[i], r_dp[j] + 1);
             }
