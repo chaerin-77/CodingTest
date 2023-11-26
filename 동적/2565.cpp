@@ -43,7 +43,7 @@ int main()
         cin >> a >> b;
         line.push_back({a, b});
     }
-    sort(line.begin(), line.end()); 
+    sort(line.begin(), line.end()); // A값 기준으로 정렬
 
     int ans = 0;
     for (int i = 0; i < N; i++)
@@ -52,10 +52,11 @@ int main()
         for (int j = 0; j < i; j++)
         {
             if (line[i].second > line[j].second)
-                dp[i] = max(dp[i], dp[j] + 1);
+                dp[i] = max(dp[i], dp[j] + 1); // 가장 긴 오름차순 수열 구함
+                // 오름차순이 아닌 요소들만 삭제하면 되기 때문
         }
         ans = max(ans, dp[i]);
     }
-    cout << N - ans << endl;
+    cout << N - ans << endl; // 따라서 전체 갯수에서 오름차순인 것들만 빼서 출력
     return 0;
 }
