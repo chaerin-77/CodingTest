@@ -2,7 +2,7 @@
 행렬 곱셈 순서
 
 문제
-크기가 N×M인 행렬 A와 M×K인 B를 곱할 때 필요한 곱셈 연산의 수는 총 N×M×K번이다. 
+크기가 N×M인 행렬 A와 M×K인 B를 곱할 때 필요한 곱셈 연산의 수는 총 N×M×K번이다.
 행렬 N개를 곱하는데 필요한 곱셈 연산의 수는 행렬을 곱하는 순서에 따라 달라지게 된다.
 
 예를 들어, A의 크기가 5×3이고, B의 크기가 3×2, C의 크기가 2×6인 경우에 행렬의 곱 ABC를 구하는 경우를 생각해보자.
@@ -21,7 +21,7 @@ BC를 먼저 곱하고 A를 곱하는 경우 A(BC)에 필요한 곱셈 연산의
 항상 순서대로 곱셈을 할 수 있는 크기만 입력으로 주어진다.
 
 출력
-첫째 줄에 입력으로 주어진 행렬을 곱하는데 필요한 곱셈 연산의 최솟값을 출력한다. 
+첫째 줄에 입력으로 주어진 행렬을 곱하는데 필요한 곱셈 연산의 최솟값을 출력한다.
 정답은 2^31-1 보다 작거나 같은 자연수이다.
  또한, 최악의 순서로 연산해도 연산 횟수가 2^31-1보다 작거나 같다.
 */
@@ -43,23 +43,29 @@ pair<int, int> matrix[501];
 int dp[501][501];
 pair<int, int> dp_matrix[501][501];
 
-int Sum(int dx, int mid, int dy) {
+int Sum(int dx, int mid, int dy)
+{
 	return dp_matrix[dx][mid].first * dp_matrix[dx][mid].second * dp_matrix[mid + 1][dy].second;
 }
 
-int main() {
+int main()
+{
 	cin.tie(0);
 	cout.tie(0);
 	cin >> N;
-	for (int i = 1; i <= N; i++) {
+	for (int i = 1; i <= N; i++)
+	{
 		cin >> matrix[i].first >> matrix[i].second;
 		dp_matrix[i][i] = matrix[i];
 	}
-	for (int i = 1; i < N; i++) {
-		for (int dx = 1; dx + i <= N; dx++) {
+	for (int i = 1; i < N; i++)
+	{
+		for (int dx = 1; dx + i <= N; dx++)
+		{
 			int dy = dx + i;
 			dp[dx][dy] = 2147483647;
-			for (int mid = dx; mid < dy; mid++) {
+			for (int mid = dx; mid < dy; mid++)
+			{
 				dp[dx][dy] = min(dp[dx][dy], dp[dx][mid] + dp[mid + 1][dy] + Sum(dx, mid, dy));
 			}
 			dp_matrix[dx][dy].first = matrix[dx].first;
@@ -69,4 +75,3 @@ int main() {
 	cout << dp[1][N];
 	return 0;
 }
-출처: https://junseok.tistory.com/103 [알고리즘 모음(C++):티스토리]
