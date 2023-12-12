@@ -40,12 +40,13 @@ using namespace std;
 
 int N;
 pair<int, int> matrix[501];
-int dp[501][501];
-pair<int, int> dp_matrix[501][501];
+int dp[501][501]; // dp[1][3]이면 1번부터 3번 행렬 까지의 최소 연산
+pair<int, int> dp_matrix[501][501]; // dp를 계산하기 위한 행과 열 값 저장
 
 int Sum(int dx, int mid, int dy)
 {
 	return dp_matrix[dx][mid].first * dp_matrix[dx][mid].second * dp_matrix[mid + 1][dy].second;
+	// dp ~ mid, mid+1 ~ dy 행렬의 곱셈 값을 반환
 }
 
 int main()
@@ -62,12 +63,14 @@ int main()
 	{
 		for (int dx = 1; dx + i <= N; dx++)
 		{
-			int dy = dx + i;
+			int dy = dx + i; // 계산하는 행렬의 간격을 늘림
 			dp[dx][dy] = 2147483647;
-			for (int mid = dx; mid < dy; mid++)
+			for (int mid = dx; mid < dy; mid++) // mid를 기준으로 dx ~ mid, mid+1 ~ dy 나눔
 			{
 				dp[dx][dy] = min(dp[dx][dy], dp[dx][mid] + dp[mid + 1][dy] + Sum(dx, mid, dy));
+				// 원래 가지고 있던 값, 혹은 dx ~ mid, mid+1 ~ dy 의 최소 연산 횟수에 두 행렬의 연산 값 중 최소값 비교
 			}
+			// (2, 3), (3, 2) 행렬 계산 시 (2, 2) 행렬이 나오기 때문에
 			dp_matrix[dx][dy].first = matrix[dx].first;
 			dp_matrix[dx][dy].second = matrix[dy].second;
 		}
