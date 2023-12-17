@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/SAMSUNG/Desktop/coding/code/동적",
-      "program": "c:/Users/SAMSUNG/Desktop/coding/code/동적/build/Debug/outDebug",
+      "cwd": "c:/Users/SAMSUNG/Desktop/coding/code/탐색",
+      "program": "c:/Users/SAMSUNG/Desktop/coding/code/탐색/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
