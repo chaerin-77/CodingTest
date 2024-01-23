@@ -58,10 +58,10 @@ int main()
     {
         if (score[i] > num)
             rank++;
-        else if (num > score[i]) // 랭크가 높으면
+        else if (num > score[i])
             break;
 
-        cnt++;
+        cnt++; // 태수와 동점인 사람이 여러명이어서 P를 넘어갈 경우 태수의 등수는 등록되지 않기 때문
     }
 
     if (cnt >= P)
